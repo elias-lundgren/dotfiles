@@ -1,0 +1,19 @@
+{
+  "plugins": {
+    "base16-nvim": {
+      "rev": "e05bcb99951d8ae4ecbf4ae053922fd2be6263a5",
+      "src": "https://github.com/RRethy/base16-nvim",
+      "version": "'e05bcb99951d8ae4ecbf4ae053922fd2be6263a5'"
+    },
+    "lazy.nvim": {
+      "rev": "85c7ff3711b730b4030d03144f6db6375044ae82",
+      "src": "https://github.com/folke/lazy.nvim",
+      "version": "'85c7ff3711b730b4030d03144f6db6375044ae82'"
+    },
+    "nvim-tree.lua": {
+      "rev": "321bc61580fd066b76861c32de3319c3a6d089e7",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua",
+      "version": "'321bc61580fd066b76861c32de3319c3a6d089e7'"
+    }
+  }
+}

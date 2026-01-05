@@ -1,30 +1,29 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
-local del = vim.keymap.del
+local function cmd(c)
+  return function()
+    vim.cmd(c)
+  end
+end
 
-del("n", "<tab>")
-del("n", "<S-tab>")
-del("n", "<leader>x")
-del("n", "<leader>fm")
-del("n", "<leader>cm")
-del("n", "<leader>ch")
-
-map({"n", "v"}, "<C-y>", "\"+y")
-map({"n", "v"}, "<C-p>", "\"+p")
-
-map("n", "L", function()
-  require("nvchad.tabufline").next()
-end, { desc = "buffer goto next" })
-
-map("n", "H", function()
-  require("nvchad.tabufline").prev()
-end, { desc = "buffer goto next" })
-
-map("n", "<leader>c", function()
-  require("nvchad.tabufline").close_buffer()
-end, { desc = "buffer close" })
-
-map("n", "<leader>lf", function()
-  require("conform").format()
-end, { desc = "format"})
+map({"n", "v"}, "<C-y>", "\"+y", { noremap = true, silent = true, desc = "Yank to clipboard" })
+map({"n", "v"}, "<C-p>", "\"+p", { noremap = true, silent = true, desc = "paste from cimpboard" })
+map({"n", "i"}, "<C-h>", "<C-w>h", { noremap = true, desc = "Move to left pane" })
+map({"n", "i"}, "<C-j>", "<C-w>j", { noremap = true, desc = "Move to bottom pane" })
+map({"n", "i"}, "<C-k>", "<C-w>k", { noremap = true, desc = "Move to top pane" })
+map({"n", "i"}, "<C-l>", "<C-w>l", { noremap = true, desc = "Move to right pane" })
+map({"n", "i"}, "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, desc = "Toggle NvimTree" })
+map("n", "L", cmd("bn"), { noremap = true, desc = "Next buffer" })
+map("n", "H", cmd("bp"), { noremap = true, desc = "Previous buffer" })
+map("n", "<leader>c", cmd("bd"), { noremap = true, desc = "Close current buffer" })
+map("n", "<leader>q", cmd("quit"), { noremap = true, desc = "Quit" })
+map("n", "gd", vim.lsp.buf.definition, { noremap = true, desc = "LSP: Go to definition" })
+map("n", "<leader>lr", vim.lsp.buf.rename, { noremap = true, desc = "LSP: Rename" })
+map("n", "<leader>/", "gcc", { noremap = true, desc = "Toggle comment" })
+map("v", "<leader>/", "gcc", { noremap = true, desc = "Toggle comment" })
+map("n", "<leader>fw", cmd("Telescope live_grep"), { desc = "Telescope live grep" })
+map("n", "<leader>fb", cmd("Telescope buffers"), { desc = "Telescope find buffers" })
+map("n", "<leader>fh", cmd("Telescope help_tags"), { desc = "Telescope help page" })
+map("n", "<leader>fo", cmd("Telescope oldfiles"), { desc = "Telescope find oldfiles" })
+map("n", "<leader>ff", cmd("Telescope find_files"), { desc = "Telescope find files" })
+map({"n", "v"}, ":", cmd("Telescope cmdline"), { desc = "Commandline" })
+map({"n", "v"}, "<leader>lf", cmd("Format"), { desc = "Format" })

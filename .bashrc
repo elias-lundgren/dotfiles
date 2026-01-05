@@ -17,9 +17,11 @@ set -o vi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix)
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_ROOT=/usr/local/share/dotnet
 
 # Setup atuin
-[ -f $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh ] && source "$HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh"
+# [ -f $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh ] && source "$HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh"
 eval "$(atuin init bash --disable-up-arrow)"
 
 eval "$(fnm env)"
@@ -30,6 +32,7 @@ export BUN_INSTALL="$HOME/.bun"
 export LDFLAGS="-L/opt/homebrew/lib"
 export CPPFLAGS="-I/opt/homebrew/include"
 export CLFAGS="-Wall -Wextra -Wdouble-promotion -Wshadow -Wvla -fsanitize=address -fsanitize=undefined -pedantic -std=c11"
+export GOEXPERIMENT=jsonv2
 
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -f "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
@@ -52,12 +55,12 @@ alias vi="nvim"
 
 function red() {
   local t=$1
-  printf '\e[31m%s\e[0m' "$t"
+  printf "\x01\e[31m\x02%s\x01\e[0m\x02" "$t"
 }
 
 function cyan() {
   local t=$1
-  printf '\e[36m%s\e[0m' "$t"
+  printf "\x01\e[36m\x02%s\x01\e[0m\x02" "$t"
 }
 
 function ps1_branch() {
@@ -87,4 +90,4 @@ function ps1_full_prompt() {
   tr -s ' ' <<< "$(ps1_folder) $(ps1_branch) $(ps1_prompt "$exit_code") "
 }
 
-export PS1='$(ps1_full_prompt)'
+PS1='$(ps1_full_prompt)'

@@ -1,2 +1,4 @@
-font-family = JetBrainsMonoNL Nerd Font
-background = 1e2127
+font-family = "JetBrains Mono NL"
+theme = "Gruvbox Dark Hard"
+font-feature = -calt, -liga, -dlig
+term = xterm-256color
