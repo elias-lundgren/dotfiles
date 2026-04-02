@@ -14,6 +14,7 @@ opt.clipboard = ""
 opt.cursorline = true
 opt.cursorlineopt = "both"
 opt.cmdheight = 0
+opt.autochdir = false
 
 opt.expandtab = true
 opt.shiftwidth = 2
@@ -31,9 +32,10 @@ opt.ruler = false
 -- disable nvim intro
 opt.shortmess:append "sI"
 
-opt.signcolumn = "no"
+opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
+opt.updatetime = 100
 opt.timeoutlen = 400
 opt.undofile = true
 

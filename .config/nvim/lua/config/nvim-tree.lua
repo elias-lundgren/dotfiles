@@ -8,4 +8,12 @@ return {
     highlight_git = true,
     indent_markers = { enable = true },
   },
+  actions = {
+    change_dir = {
+      enable = false,
+    },
+  },
+  filters = {
+    dotfiles = false
+  },
 }

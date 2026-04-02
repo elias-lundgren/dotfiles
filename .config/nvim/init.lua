@@ -51,12 +51,18 @@ require("lazy").setup({
 			config = function(_, opts)
 				require("telescope").setup(opts)
 				require("telescope").load_extension("cmdline")
+				require("telescope").load_extension("project")
 			end,
 			dependencies = {
 				{
 					url = "https://github.com/jonarrien/telescope-cmdline.nvim",
 					commit = "b1c330835563c9628ce7c095cf20772f22f93f07",
 				},
+				{
+					dir = "/Users/elias/contrib/telescope-project.nvim",
+					-- url = "https://github.com/nvim-telescope/telescope-project.nvim",
+					-- commit = "8e11df94419e444601c09828dadf70890484e443",
+				}
 			},
 		},
 		{
@@ -74,6 +80,26 @@ require("lazy").setup({
 				require("conform").setup(require("config/conform"))
 			end,
 		},
+    {
+      url = "https://github.com/airblade/vim-gitgutter",
+      event = "BufReadPost",
+      commit = "0acb772e76064cc406664ab595b58b3fac76488a",
+    },
+    {
+      url = "https://github.com/kdheepak/lazygit.nvim",
+      cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+      },
+      commit = "a04ad0dbc725134edbee3a5eea29290976695357",
+      dependencies = {
+        url = "https://github.com/nvim-lua/plenary.nvim",
+        commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      },
+    },
 	},
 })
 
