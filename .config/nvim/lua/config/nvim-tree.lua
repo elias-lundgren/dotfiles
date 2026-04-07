@@ -14,6 +14,7 @@ return {
     },
   },
   filters = {
-    dotfiles = false
+    dotfiles = false,
+    git_ignored = false,
   },
 }

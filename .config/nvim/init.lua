@@ -59,12 +59,17 @@ require("lazy").setup({
 					commit = "b1c330835563c9628ce7c095cf20772f22f93f07",
 				},
 				{
-					dir = "/Users/elias/contrib/telescope-project.nvim",
-					-- url = "https://github.com/nvim-telescope/telescope-project.nvim",
-					-- commit = "8e11df94419e444601c09828dadf70890484e443",
+					url = "https://github.com/branchgrove/telescope-project.nvim",
+          commit = "505188c145225fe83f23660b5b81eaf610fb33a3",
 				}
 			},
 		},
+    {
+      url = "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+      commit = "c7188a8f9d2953696b6303caccbf39c51fa2c1b1",
+      opts = require("config/render-markdown") ,
+      ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+    },
 		{
 			url = "https://github.com/nvim-mini/mini.misc",
 			event = "BufReadPost",
@@ -100,6 +105,18 @@ require("lazy").setup({
         commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       },
     },
+    {
+      url = "https://github.com/sudo-tee/opencode.nvim",
+      opts = require("config/opencode"),
+      cmd = {
+        "Opencode",
+      },
+      commit = "ed0c07815e867f3b71f4e012de4781cc24fb29e5",
+      dependencies = {
+        url = "https://github.com/nvim-lua/plenary.nvim",
+        commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      },
+    }
 	},
 })
 
