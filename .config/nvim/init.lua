@@ -68,7 +68,7 @@ require("lazy").setup({
       url = "https://github.com/MeanderingProgrammer/render-markdown.nvim",
       commit = "c7188a8f9d2953696b6303caccbf39c51fa2c1b1",
       opts = require("config/render-markdown") ,
-      ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+      ft = { 'markdown' },
     },
 		{
 			url = "https://github.com/nvim-mini/mini.misc",
@@ -105,18 +105,6 @@ require("lazy").setup({
         commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       },
     },
-    {
-      url = "https://github.com/sudo-tee/opencode.nvim",
-      opts = require("config/opencode"),
-      cmd = {
-        "Opencode",
-      },
-      commit = "ed0c07815e867f3b71f4e012de4781cc24fb29e5",
-      dependencies = {
-        url = "https://github.com/nvim-lua/plenary.nvim",
-        commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
-      },
-    }
 	},
 })
 
